@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="mv"
+            type="com.aziz.ui.fragment.main.MainViewModel" />
+
+        <variable
+            name="v"
+            type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.main.MainFragment"
+        tools:ignore="MissingConstraints,RedundantNamespace, ContentDescription,HardcodedText">
+
+
+        <TextView
+            android:id="@+id/tv_Quiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="35dp"
+            android:text="@string/quiz"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_kub"
+            android:layout_width="50dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="54.2dp"
+            android:background="@drawable/ic_svg_kub"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Quiz" />
+
+        <TextView
+            android:id="@+id/tv_QuestionsAmount"
+            android:layout_width="117dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="67dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/questions_amount"
+            android:textColor="#A9A9A9"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_kub" />
+
+        <TextView
+            android:id="@+id/tv_ten"
+            android:layout_width="17dp"
+            android:layout_height="16dp"
+            android:text="10"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_QuestionsAmount"
+            app:layout_constraintTop_toTopOf="@+id/tv_QuestionsAmount" />
+
+
+        <ImageView
+            android:id="@+id/iv_plus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/ic_plus"
+            android:onClick="@{(v)-> mv.increases()}"
+            app:layout_constraintEnd_toStartOf="@+id/tv_ten"
+            app:layout_constraintTop_toBottomOf="@+id/tv_QuestionsAmount" />
+
+        <ImageView
+            android:id="@+id/iv_minus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/ic_minus"
+            android:onClick="@{(v)-> mv.decreases()}"
+            app:layout_constraintStart_toEndOf="@+id/tv_ten"
+            app:layout_constraintTop_toBottomOf="@+id/tv_QuestionsAmount" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:theme="@style/SeekBarColor"
+            android:max="20"
+            android:progress="10"
+            app:layout_constraintStart_toStartOf="@+id/tv_QuestionsAmount"
+            app:layout_constraintTop_toBottomOf="@+id/iv_plus" />
+
+        <TextView
+            android:id="@+id/tv_Category"
+            android:layout_width="81dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="23dp"
+            android:text="Category"
+            android:textColor="#A9A9A9"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/seekBar"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+        <Spinner
+            android:id="@+id/spinner_first"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="5dp"
+            android:entries="@array/levelCategory"
+            app:layout_constraintStart_toStartOf="@+id/tv_Category"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Category" />
+
+        <TextView
+            android:id="@+id/tv_Difficulty"
+            android:layout_width="81dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="9dp"
+            android:text="Difficulty"
+            android:textColor="#A9A9A9"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/spinner_first"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_first" />
+
+        <Spinner
+            android:id="@+id/spinner_second"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="5dp"
+            android:entries="@array/levelCategory"
+            app:layout_constraintStart_toStartOf="@+id/tv_Difficulty"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Difficulty" />
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:background="@drawable/round_corner"
+            android:text="@string/start"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_second" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
