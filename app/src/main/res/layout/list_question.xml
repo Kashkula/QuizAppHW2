@@ -56,14 +56,14 @@
                 android:id="@+id/btn_first"
                 style="@style/ForBtn"
                 android:background="@drawable/for_variants"
-                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(0),1)}"
+                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(0),0)}"
                 android:text="@{qm.type.equals(`multiple`) ? qm.incorrectAnswers.get(0): ``}" />
 
             <Button
                 android:id="@+id/btn_second"
                 style="@style/ForBtn"
                 android:background="@drawable/for_variants"
-                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(1),2)}"
+                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(1),1)}"
                 android:text="@{qm.type.equals(`multiple`) ? qm.incorrectAnswers.get(1): ``}" />
 
 
@@ -71,14 +71,14 @@
                 android:id="@+id/btn_third"
                 style="@style/ForBtn"
                 android:background="@drawable/for_variants"
-                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(2),3)}"
+                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(2),2)}"
                 android:text="@{qm.type.equals(`multiple`) ? qm.incorrectAnswers.get(2): ``}" />
 
             <Button
                 android:id="@+id/btn_fourth"
                 style="@style/ForBtn"
                 android:background="@drawable/for_variants"
-                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(3),4)}"
+                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(3),3)}"
                 android:text="@{qm.type.equals(`multiple`) ? qm.incorrectAnswers.get(3): ``}" />
 
         </LinearLayout>
@@ -97,14 +97,14 @@
                 android:id="@+id/btn_fifth"
                 style="@style/ForBtn"
                 android:background="@drawable/for_variants"
-                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(0),0)}"
+                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(0),4)}"
                 android:text="@{qm.type.equals(`boolean`) ? qm.incorrectAnswers.get(0): ``}" />
 
             <Button
                 android:id="@+id/btn_sixth"
                 style="@style/ForBtn"
                 android:background="@drawable/for_variants"
-                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(1),1)}"
+                android:onClick="@{(v)->vh.methods(qm.incorrectAnswers.get(1),5)}"
                 android:text="@{qm.type.equals(`boolean`) ? qm.incorrectAnswers.get(1): ``}" />
 
         </LinearLayout>

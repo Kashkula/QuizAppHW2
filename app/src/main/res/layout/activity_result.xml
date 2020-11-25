@@ -3,6 +3,10 @@
 
     <data>
 
+        <variable
+            name="ra"
+            type="com.aziz.ui.activity.ResultActivity" />
+
 
     </data>
 
@@ -49,30 +53,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/text_view_cat"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="50dp"
-                    android:text="Category:"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/text_view_var"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="80dp"
-                    android:text="Mixed"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/text_view_cat" />
+                    <TextView
+                        android:id="@+id/text_view_cat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="50dp"
+                        android:text="Category:"
+                        android:textColor="@android:color/black"
+                        android:textSize="17sp"
+                        app:layout_constraintEnd_toStartOf="@id/text_view_var"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/text_view_var"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="default"
+                        android:textColor="@android:color/black"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toEndOf="@+id/text_view_cat"
+                        app:layout_constraintTop_toTopOf="@id/text_view_cat" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                 <TextView
                     android:id="@+id/text_difficulty"
@@ -120,7 +131,7 @@
                     android:id="@+id/text_under_correct_answers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="300"
+                    android:text="3"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

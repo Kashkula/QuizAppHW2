@@ -1,7 +1,5 @@
 package com.aziz.data.network;
 
-import android.util.Log;
-
 import com.aziz.data.model.category.CategoryResponse;
 import com.aziz.data.model.question.QuestionResponse;
 

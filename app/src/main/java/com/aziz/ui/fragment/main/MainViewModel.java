@@ -19,7 +19,7 @@ public class MainViewModel extends ViewModel {
     MutableLiveData<ArrayList<CategoryModel>> fS_mutable = new MutableLiveData<>();
     ArrayList<String> fS_list = new ArrayList<>();
     MutableLiveData<String> name = new MutableLiveData<>();
-    Integer num = 10;
+    Integer num = 1;
 
 
     public void increases() {
@@ -56,16 +56,15 @@ public class MainViewModel extends ViewModel {
         });
     }
 
-    public void openActivity(View view, int id, int category, String difficulty) {
-        try {
-            Context context = view.getContext();
-            Intent intent = new Intent(context, QuestionActivity.class);
-            intent.putExtra(MainFragment.ID, id);
-            intent.putExtra(MainFragment.CATEGORY, category);
-            intent.putExtra(MainFragment.DIFFICULTY, difficulty);
-            context.startActivity(intent);
-        } catch (Exception ignore) {
-
-        }
+    public void openActivity(View view, int id, int category, String categoryStr, String difficulty) {
+        Context context = view.getContext();
+        Intent intent = new Intent(context, QuestionActivity.class);
+        intent.putExtra(MainFragment.ID, id);
+        intent.putExtra(MainFragment.CATEGORY, category);
+        intent.putExtra(MainFragment.DIFFICULTY, difficulty);
+        intent.putExtra(MainFragment.CATEGORY_STR, categoryStr);
+        context.startActivity(intent);
     }
+
+
 }

@@ -19,6 +19,5 @@ public class App extends Application {
 
         repository = new QuizRepository(apiClient, historyStorage);
         
-        //oijo
     }
 }

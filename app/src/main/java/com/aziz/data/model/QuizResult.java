@@ -6,13 +6,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class QuizResult implements Serializable{
+public class QuizResult implements Serializable {
 
     private String category;
     private String difficulty;
     private int correctAnswerResult;
     private Date createdAt;
-    private ArrayList<QuestionModel> listt;
+    private ArrayList<QuestionModel> list;
+    private int amount;
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
     public String getCategory() {
         return category;
@@ -46,25 +55,25 @@ public class QuizResult implements Serializable{
         this.createdAt = createdAt;
     }
 
-    public ArrayList<QuestionModel> getListt() {
-        return listt;
+    public ArrayList<QuestionModel> getList() {
+        return list;
     }
 
-    public void setListt(ArrayList<QuestionModel> listt) {
-        this.listt = listt;
+    public void setList(ArrayList<QuestionModel> list) {
+        this.list = list;
     }
 
-    public QuizResult(String category, String difficulty, ArrayList<QuestionModel> listt) {
+    public QuizResult(String category, String difficulty) {
         this.category = category;
         this.difficulty = difficulty;
-        this.listt = listt;
     }
 
-    public QuizResult(String category, String difficulty, int correctAnswerResult, Date createdAt, ArrayList<QuestionModel> listt) {
+    public QuizResult(String category, String difficulty, int correctAnswerResult, Date createdAt, ArrayList<QuestionModel> list, int amount) {
         this.category = category;
         this.difficulty = difficulty;
         this.correctAnswerResult = correctAnswerResult;
         this.createdAt = createdAt;
-        this.listt = listt;
+        this.list = list;
+        this.amount = amount;
     }
 }

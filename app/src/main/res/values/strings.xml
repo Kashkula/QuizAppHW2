@@ -3,6 +3,11 @@
     <string name="start">Start</string>
     <string name="questions_amount">Questions amount:</string>
     <string name="quiz">Quiz</string>
+    <string name="category_mixed">Category: Mixed</string>
+    <string name="correct_answers_8_10">Correct answers: 8/10</string>
+    <string name="difficulty_easy">Difficulty: Easy</string>
+    <string name="_12_may_2019_20_32">12 may 2019 20:32</string>
+    <string name="history">History</string>
 
     <string-array name="levelCategory">
         <item>Easy</item>
