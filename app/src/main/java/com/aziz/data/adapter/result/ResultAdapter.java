@@ -48,6 +48,11 @@ public class ResultAdapter extends BaseRecyclerViewAdapter<QuizResult> {
         notifyDataSetChanged();
     }
 
+    public void setList(ArrayList<QuizResult> list) {
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
     public void clear() {
         list.clear();
         notifyDataSetChanged();

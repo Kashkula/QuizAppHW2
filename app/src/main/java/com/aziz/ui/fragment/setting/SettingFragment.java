@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.aziz.App;
 import com.aziz.R;
 import com.aziz.ui.fragment.history.HistoryFragment;
 
@@ -38,5 +39,18 @@ public class SettingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        view.findViewById(R.id.layout_4).setOnClickListener(v -> {
+            clear();
+        });
+
+        view.findViewById(R.id.tv_clear).setOnClickListener(v -> {
+            clear();
+        });
+
+    }
+
+    public void clear() {
+        Toast.makeText(getContext(), "History: cleaned", Toast.LENGTH_SHORT).show();
+        App.db.quizDao().deleteAll();
     }
 }

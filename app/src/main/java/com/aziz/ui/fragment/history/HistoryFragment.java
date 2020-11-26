@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,10 +11,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aziz.App;
 import com.aziz.R;
 import com.aziz.data.adapter.result.ResultAdapter;
 import com.aziz.data.model.QuizResult;
-import com.aziz.ui.activity.question.QuestionViewModel;
 
 import java.util.ArrayList;
 
@@ -44,6 +43,12 @@ public class HistoryFragment extends Fragment {
         init(view);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setList((ArrayList<QuizResult>) App.db.quizDao().getAll());
+    }
+
     public void init(View v) {
         list = new ArrayList<>();
         adapter = new ResultAdapter(list);
@@ -51,11 +56,8 @@ public class HistoryFragment extends Fragment {
         rv.setAdapter(adapter);
     }
 
-    public void listAdd(QuizResult qr) {
-        adapter.add(qr);
+    public void setList(ArrayList<QuizResult> list) {
+        adapter.setList(list);
     }
 
-    public void clear() {
-        adapter.clear();
-    }
 }

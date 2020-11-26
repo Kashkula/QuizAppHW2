@@ -17,7 +17,7 @@ import com.aziz.data.adapter.question.QuestionAdapter;
 import com.aziz.data.model.QuizResult;
 import com.aziz.data.model.question.QuestionModel;
 import com.aziz.data.network.IQuizApiClient;
-import com.aziz.ui.activity.ResultActivity;
+import com.aziz.ui.activity.result.ResultActivity;
 import com.aziz.ui.fragment.main.MainFragment;
 import com.google.gson.Gson;
 
@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
-import static com.aziz.ui.activity.question.QuestionActivity.CORRECT_ANSWER;
 
 @SuppressLint("SetTextI18n")
 

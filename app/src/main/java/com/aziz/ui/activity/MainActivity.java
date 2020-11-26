@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListenerMF
         intent.putExtra(MainFragment.CATEGORY, category);
         intent.putExtra(MainFragment.DIFFICULTY, difficulty);
         intent.putExtra(MainFragment.CATEGORY_STR, categoryStr);
-        startActivityForResult(intent, 22);
+        startActivity(intent);
     }
 
     @Override
@@ -100,19 +100,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListenerMF
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 22 && resultCode == RESULT_OK && data != null) {
-            Gson gson = new Gson();
-            Type type = new TypeToken<QuizResult>() {
-            }.getType();
-            QuizResult qr = gson.fromJson(data.getStringExtra(QuestionViewModel.QUIZ_RESULT), type);
-            historyFragment.listAdd(qr);
-            Log.d("TAG", "startActivityForResult: " + qr.getDifficulty());
-        }
-
-    }
 
     //    @Override
 //    public void openActivity() {

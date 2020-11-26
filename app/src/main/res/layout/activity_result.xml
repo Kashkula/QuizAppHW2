@@ -5,7 +5,7 @@
 
         <variable
             name="ra"
-            type="com.aziz.ui.activity.ResultActivity" />
+            type="com.aziz.ui.activity.result.ResultActivity" />
 
 
     </data>
@@ -15,7 +15,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activity.ResultActivity">
+        tools:context=".ui.activity.result.ResultActivity">
 
         <TextView
             android:id="@+id/textViewResult"

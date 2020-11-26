@@ -1,18 +1,40 @@
 package com.aziz.data.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.aziz.data.db.converter.DateConverter;
+import com.aziz.data.db.converter.QuestionConverter;
 import com.aziz.data.model.question.QuestionModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class QuizResult implements Serializable {
+@Entity
+public class QuizResult {
 
+    @PrimaryKey(autoGenerate = true)
+    public
+    int id;
+    @ColumnInfo(name = "category")
     private String category;
+
+    @ColumnInfo(name = "difficulty")
     private String difficulty;
+
+    @ColumnInfo(name = "correctAnswerResult")
     private int correctAnswerResult;
+
+    @TypeConverters(DateConverter.class)
     private Date createdAt;
+
+    @TypeConverters(QuestionConverter.class)
     private ArrayList<QuestionModel> list;
+
+    @ColumnInfo(name = "amount")
     private int amount;
 
     public int getAmount() {
@@ -61,11 +83,6 @@ public class QuizResult implements Serializable {
 
     public void setList(ArrayList<QuestionModel> list) {
         this.list = list;
-    }
-
-    public QuizResult(String category, String difficulty) {
-        this.category = category;
-        this.difficulty = difficulty;
     }
 
     public QuizResult(String category, String difficulty, int correctAnswerResult, Date createdAt, ArrayList<QuestionModel> list, int amount) {

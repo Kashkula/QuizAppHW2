@@ -1,4 +1,4 @@
-package com.aziz.ui.activity;
+package com.aziz.ui.activity.result;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.aziz.R;
 import com.aziz.data.model.QuizResult;
@@ -19,49 +20,34 @@ import java.lang.reflect.Type;
 
 public class ResultActivity extends AppCompatActivity {
     public String difficulty, categoryStr;
-    float idF, forAnswerF;
-    int id, forAnswer;
+    protected float idF, forAnswerF;
+    protected int id, forAnswer;
     protected ActivityResultBinding binding;
+    protected ResultViewModel vm;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_result);
+        vm = new ViewModelProvider(this).get(ResultViewModel.class);
+
         binding.setRa(this);
 
-
         Intent intent = getIntent();
-        QuizResult qr = getQuizResult(intent.getStringExtra(QuestionViewModel.QUIZ_RESULT));
+        QuizResult qr = vm.getQuizResult(intent.getStringExtra(QuestionViewModel.QUIZ_RESULT));
+        vm.saveToDB(qr);
 
-        assert qr != null;
-        id = qr.getAmount();
-        difficulty = qr.getDifficulty();
-        categoryStr = qr.getCategory();
+        idF = qr.getAmount();
+        forAnswerF = qr.getCorrectAnswerResult();
 
-
-        forAnswer = qr.getCorrectAnswerResult();
-
-        idF = id;
-        forAnswerF = forAnswer;
-
-        binding.textUnderDifficulty.setText(difficulty);
-        binding.textUnderCorrectAnswers.setText(forAnswer + "/" + id);
+        binding.textUnderDifficulty.setText(qr.getDifficulty());
+        binding.textUnderCorrectAnswers.setText(qr.getCorrectAnswerResult() + "/" + qr.getAmount());
         binding.textUnderResult.setText(forAnswerF / idF * 100 + "%");
-        binding.textViewVar.setText(categoryStr);
+        binding.textViewVar.setText(qr.getCategory());
 
         binding.btnFinish.setOnClickListener(v -> {
             finish();
         });
-
     }
-
-    private QuizResult getQuizResult(String stringExtra) {
-        Gson gson = new Gson();
-        Type type = new TypeToken<QuizResult>() {
-        }.getType();
-        return gson.fromJson(stringExtra, type);
-    }
-
-
 }
