@@ -14,6 +14,7 @@ public class App extends Application {
     public static QuizApiClient apiClient;
     public static QuizRepository repository;
     public static QuizDataBase db;
+    public static String theme = "str";
 
     @Override
     public void onCreate() {

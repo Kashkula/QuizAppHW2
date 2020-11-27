@@ -2,29 +2,24 @@ package com.aziz.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.aziz.App;
 import com.aziz.R;
 import com.aziz.data.adapter.pager.FragmentAdapter;
-import com.aziz.data.model.QuizResult;
 import com.aziz.ui.activity.question.QuestionActivity;
-import com.aziz.ui.activity.question.QuestionViewModel;
 import com.aziz.ui.fragment.history.HistoryFragment;
 import com.aziz.ui.fragment.main.MainFragment;
 import com.aziz.ui.fragment.main.OnClickListenerMF;
 import com.aziz.ui.fragment.setting.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +33,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListenerMF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        if (sharedPreferences.getInt(SettingFragment.THEME, 0) == 0)
+            setTheme(R.style.Red);
+        else if (sharedPreferences.getInt(SettingFragment.THEME, 0) == 1)
+            setTheme(R.style.Orange);
+        else
+            setTheme(R.style.AppTheme);
+
         setContentView(R.layout.main_activity);
         init();
         fillFragment();
@@ -99,12 +102,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListenerMF
         super.startActivityForResult(intent, requestCode);
 
     }
-
-
-    //    @Override
-//    public void openActivity() {
-//        Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
-//    }
 
 
 //    private void openMainF(Bundle savedInstanceState) {

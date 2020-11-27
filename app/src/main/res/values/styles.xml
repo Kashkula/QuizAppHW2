@@ -1,10 +1,17 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#6200EE</item>
+        <item name="colorPrimaryDark">#3700B3</item>
+        <item name="colorAccent">#4CE2A7</item>
+        <item name="correctA">#801F2041</item>
+        <item name="questionTextColor">#1A051D</item>
+        <item name="wrongAnswer">#FF4D4D</item>
+        <item name="clicked">#6979F8</item>
+        <item name="whiteText">#000000</item>
+        <item name="pBar">#BE52F2</item>
+        <item name="backgroundColor">#FFFF</item>
+        <item name="color">#FF6581</item>
     </style>
 
     <style name="AppTheme." parent="Theme.AppCompat.Light.DarkActionBar">
@@ -29,7 +36,6 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">24sp</item>
-        <item name="android:textColor">#000000</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">26dp</item>
         <item name="android:layout_marginStart">24dp</item>
@@ -42,5 +48,35 @@
     <style name="for_variant">
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="Red" parent="AppTheme">
+        <item name="colorPrimary">#6200EE</item>
+        <item name="colorPrimaryDark">#3700B3</item>
+        <item name="colorAccent">#4CE2A7</item>
+        <item name="correctA">#801F2041</item>
+        <item name="questionTextColor">#1A051D</item>
+        <item name="wrongAnswer">#FF4D4D</item>
+        <item name="clicked">#6979F8</item>
+        <item name="whiteText">#FFFFFF</item>
+        <item name="pBar">#BE52F2</item>
+        <item name="color">#FF6581</item>
+        <item name="backgroundColor">#FF4D4D</item>
+
+    </style>
+
+    <style name="Orange" parent="AppTheme">
+        <item name="colorPrimary">#FF5722</item>
+        <item name="colorPrimaryDark">#FF5722</item>
+        <item name="colorAccent">#4CE2A7</item>
+        <item name="correctA">#FFFFFF</item>
+        <item name="questionTextColor">#1A051D</item>
+        <item name="wrongAnswer">#FF4D4D</item>
+        <item name="clicked">#6979F8</item>
+        <item name="whiteText">#FFFFFF</item>
+        <item name="color">#FF6581</item>
+        <item name="pBar">#4CE2A7</item>
+        <item name="backgroundColor">#B5AFAF</item>
+    </style>
+
 
 </resources>

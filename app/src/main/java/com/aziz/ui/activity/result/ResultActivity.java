@@ -2,21 +2,19 @@ package com.aziz.ui.activity.result;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.aziz.App;
 import com.aziz.R;
 import com.aziz.data.model.QuizResult;
 import com.aziz.databinding.ActivityResultBinding;
 import com.aziz.ui.activity.question.QuestionViewModel;
-import com.aziz.ui.fragment.main.MainFragment;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
+import com.aziz.ui.fragment.setting.SettingFragment;
 
 public class ResultActivity extends AppCompatActivity {
     public String difficulty, categoryStr;
@@ -29,6 +27,14 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        if (sharedPreferences.getInt(SettingFragment.THEME, 0) == 0)
+            setTheme(R.style.Red);
+        else if (sharedPreferences.getInt(SettingFragment.THEME, 0) == 1)
+            setTheme(R.style.Orange);
+        else
+            setTheme(R.style.AppTheme);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_result);
         vm = new ViewModelProvider(this).get(ResultViewModel.class);
 

@@ -1,8 +1,8 @@
 package com.aziz.ui.activity.question;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -10,12 +10,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 
+import com.aziz.App;
 import com.aziz.R;
 import com.aziz.data.adapter.question.OnClickNextItemQA;
 import com.aziz.data.adapter.question.OnClickOpenActivity;
 import com.aziz.data.adapter.question.QuestionAdapter;
 import com.aziz.data.custom.CustomLinearLayoutManager;
 import com.aziz.databinding.ActivityQuestionBinding;
+import com.aziz.ui.fragment.setting.SettingFragment;
 
 public class QuestionActivity extends AppCompatActivity implements OnClickNextItemQA, OnClickOpenActivity {
     protected ActivityQuestionBinding binding;
@@ -47,6 +49,14 @@ public class QuestionActivity extends AppCompatActivity implements OnClickNextIt
     }
 
     private void init() {
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        if (sharedPreferences.getInt(SettingFragment.THEME, 0) == 0)
+            setTheme(R.style.Red);
+        else if (sharedPreferences.getInt(SettingFragment.THEME, 0) == 1)
+            setTheme(R.style.Orange);
+        else
+            setTheme(R.style.AppTheme);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_question);
         vm = new ViewModelProvider(this).get(QuestionViewModel.class);
         binding.setQv(vm);

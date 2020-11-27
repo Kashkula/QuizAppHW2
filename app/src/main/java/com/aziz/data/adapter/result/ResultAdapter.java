@@ -43,18 +43,8 @@ public class ResultAdapter extends BaseRecyclerViewAdapter<QuizResult> {
         binding.tvDate.setText(strDate);
     }
 
-    public void add(QuizResult quizResult) {
-        list.add(quizResult);
-        notifyDataSetChanged();
-    }
-
     public void setList(ArrayList<QuizResult> list) {
         this.list = list;
-        notifyDataSetChanged();
-    }
-
-    public void clear() {
-        list.clear();
         notifyDataSetChanged();
     }
 }
