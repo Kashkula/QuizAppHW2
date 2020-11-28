@@ -30,6 +30,8 @@ public class QuestionActivity extends AppCompatActivity implements OnClickNextIt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sp = getSharedPreferences(SettingFragment.SHARED,MODE_PRIVATE);
+        setMyTheme(sp.getInt(SettingFragment.THEME, 20));
         init();
         methodsVM();
         onBack();
@@ -49,13 +51,7 @@ public class QuestionActivity extends AppCompatActivity implements OnClickNextIt
     }
 
     private void init() {
-        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-        if (sharedPreferences.getInt(SettingFragment.THEME, 0) == 0)
-            setTheme(R.style.Red);
-        else if (sharedPreferences.getInt(SettingFragment.THEME, 0) == 1)
-            setTheme(R.style.Orange);
-        else
-            setTheme(R.style.AppTheme);
+
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_question);
         vm = new ViewModelProvider(this).get(QuestionViewModel.class);
@@ -93,4 +89,28 @@ public class QuestionActivity extends AppCompatActivity implements OnClickNextIt
     public void answersMethod() {
         vm.sendIntent(this);
     }
+
+    public void setMyTheme(int theme) {
+        switch (theme) {
+            case 0:
+                setTheme(R.style.Red);
+                break;
+            case 1:
+                setTheme(R.style.Orange);
+                break;
+            case 2:
+                setTheme(R.style.Blue);
+                break;
+            case 3:
+                setTheme(R.style.Dark);
+                break;
+            case 4:
+                setTheme(R.style.Green);
+                break;
+            default:
+                setTheme(R.style.AppTheme);
+                break;
+        }
+    }
+
 }

@@ -26,5 +26,8 @@ public class App extends Application {
 
         db = Room.databaseBuilder(getApplicationContext(),
                 QuizDataBase.class, "Quizdb").allowMainThreadQueries().build();
+
     }
+
+
 }

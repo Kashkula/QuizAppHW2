@@ -37,6 +37,7 @@ public class SettingFragment extends Fragment implements OnClickSF {
     protected ArrayList<ThemeModel> list;
     protected ThemeAdapter adapter;
     public static final String THEME = "theme";
+    public static final String SHARED = "shared";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -59,6 +60,9 @@ public class SettingFragment extends Fragment implements OnClickSF {
 
         add("Red");
         add("Orange");
+        add("Blue");
+        add("Dark");
+        add("Green");
 
         binding.layout4.setOnClickListener(v -> {
             clear();
@@ -73,7 +77,7 @@ public class SettingFragment extends Fragment implements OnClickSF {
     private void init() {
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         list = new ArrayList<>();
-        adapter = new ThemeAdapter(list, this);
+        adapter = new ThemeAdapter(list, this, Objects.requireNonNull(getActivity()));
         binding.rv.setLayoutManager(manager);
         binding.rv.setAdapter(adapter);
 
@@ -94,11 +98,9 @@ public class SettingFragment extends Fragment implements OnClickSF {
     }
 
     public void setTheme(int position) {
-        SharedPreferences sharedPreferences = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
-
-        if (sharedPreferences.getInt(SettingFragment.THEME, 0) != position) {
-            SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
-            sharedPref.edit().putInt(THEME, position).apply();
+        SharedPreferences sP = Objects.requireNonNull(getActivity()).getSharedPreferences(SHARED,Context.MODE_PRIVATE);
+        if (sP.getInt(SettingFragment.THEME, 20) != position) {
+            sP.edit().putInt(THEME, position).apply();
             Objects.requireNonNull(getActivity()).startActivity(new Intent(getActivity(), SplashActivity.class));
             getActivity().finish();
         } else

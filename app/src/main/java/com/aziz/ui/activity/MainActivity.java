@@ -33,13 +33,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListenerMF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-        if (sharedPreferences.getInt(SettingFragment.THEME, 0) == 0)
-            setTheme(R.style.Red);
-        else if (sharedPreferences.getInt(SettingFragment.THEME, 0) == 1)
-            setTheme(R.style.Orange);
-        else
-            setTheme(R.style.AppTheme);
+        SharedPreferences sp = getSharedPreferences(SettingFragment.SHARED,MODE_PRIVATE);
+        setMyTheme(sp.getInt(SettingFragment.THEME, 20));
 
         setContentView(R.layout.main_activity);
         init();
@@ -101,6 +96,29 @@ public class MainActivity extends AppCompatActivity implements OnClickListenerMF
     public void startActivityForResult(Intent intent, int requestCode) {
         super.startActivityForResult(intent, requestCode);
 
+    }
+
+    public void setMyTheme(int theme) {
+        switch (theme) {
+            case 0:
+                setTheme(R.style.Red);
+                break;
+            case 1:
+                setTheme(R.style.Orange);
+                break;
+            case 2:
+                setTheme(R.style.Blue);
+                break;
+            case 3:
+                setTheme(R.style.Dark);
+                break;
+            case 4:
+                setTheme(R.style.Green);
+                break;
+            default:
+                setTheme(R.style.AppTheme);
+                break;
+        }
     }
 
 
