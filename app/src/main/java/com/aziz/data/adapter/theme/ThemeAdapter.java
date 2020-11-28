@@ -30,7 +30,7 @@ public class ThemeAdapter extends BaseRecyclerViewAdapter<ThemeModel> {
     public ThemeAdapter(ArrayList<ThemeModel> list, OnClickSF listener, FragmentActivity activity) {
         super(list);
         this.listener = listener;
-        sp = activity.getPreferences(Context.MODE_PRIVATE);
+        sp = activity.getSharedPreferences(SettingFragment.SHARED, Context.MODE_PRIVATE);
     }
 
     @NonNull
