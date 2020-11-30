@@ -55,6 +55,8 @@ public class SettingFragment extends Fragment implements OnClickSF {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        SharedPreferences sP = App.sp;
+        sP.edit().putInt(THEME, 5).apply();
 
         init();
 
@@ -63,6 +65,7 @@ public class SettingFragment extends Fragment implements OnClickSF {
         add("Blue");
         add("Dark");
         add("Green");
+        add("Light");
 
         binding.layout4.setOnClickListener(v -> {
             clear();
@@ -98,7 +101,7 @@ public class SettingFragment extends Fragment implements OnClickSF {
     }
 
     public void setTheme(int position) {
-        SharedPreferences sP = Objects.requireNonNull(getActivity()).getSharedPreferences(SHARED,Context.MODE_PRIVATE);
+        SharedPreferences sP = App.sp;
         if (sP.getInt(SettingFragment.THEME, 20) != position) {
             sP.edit().putInt(THEME, position).apply();
             Objects.requireNonNull(getActivity()).startActivity(new Intent(getActivity(), SplashActivity.class));
