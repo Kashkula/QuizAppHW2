@@ -72,18 +72,10 @@ public class MainFragment extends Fragment {
 
     private void onClick() {
         binding.btnStart.setOnClickListener(v ->
-
                 listener.openActivity(binding.seekBar.getProgress(),
                         vm.fS_mutable.getValue().get(binding.spinnerFirst.getSelectedItemPosition()).getId(),
                         vm.fS_mutable.getValue().get(binding.spinnerFirst.getSelectedItemPosition()).getName(),
                         binding.spinnerSecond.getSelectedItem().toString().toLowerCase()));
-
-//        vm.openActivity(getView(),
-//                binding.seekBar.getProgress(),
-//                vm.fS_mutable.getValue().get(binding.spinnerFirst.getSelectedItemPosition()).getId(),
-//                vm.fS_mutable.getValue().get(binding.spinnerFirst.getSelectedItemPosition()).getName(),
-//                binding.spinnerSecond.getSelectedItem().toString().toLowerCase());
-
     }
 
     private void seekBarListener() {

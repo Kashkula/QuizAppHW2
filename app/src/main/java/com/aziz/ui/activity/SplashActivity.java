@@ -13,7 +13,7 @@ import com.aziz.R;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final long delayTime = 1000;
+    private static final long delayTime = 500;
     Handler handler = new Handler();
     private Context context;
 
@@ -21,11 +21,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-
         this.context = SplashActivity.this;
         handler.postDelayed(postTask, delayTime);
-
     }
 
     @Override

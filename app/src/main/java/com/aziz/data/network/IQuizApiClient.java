@@ -12,6 +12,7 @@ public interface IQuizApiClient {
     void getCategory(CategoryCallBack callBack);
 
     interface QuestionsCallBack extends IBaseCallBack<ArrayList<QuestionModel>> {
+
         @Override
         void onSuccess(ArrayList<QuestionModel> result);
 

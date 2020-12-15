@@ -1,16 +1,11 @@
 package com.aziz.ui.fragment.main;
 
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.aziz.App;
 import com.aziz.data.model.category.CategoryModel;
 import com.aziz.data.network.IQuizApiClient;
-import com.aziz.ui.activity.question.QuestionActivity;
 
 import java.util.ArrayList;
 
@@ -39,7 +34,6 @@ public class MainViewModel extends ViewModel {
         name.setValue(String.valueOf(num));
     }
 
-
     public void getCategories() {
         App.apiClient.getCategory(new IQuizApiClient.CategoryCallBack() {
             @Override
@@ -55,16 +49,4 @@ public class MainViewModel extends ViewModel {
             }
         });
     }
-
-    public void openActivity(View view, int id, int category, String categoryStr, String difficulty) {
-        Context context = view.getContext();
-        Intent intent = new Intent(context, QuestionActivity.class);
-        intent.putExtra(MainFragment.ID, id);
-        intent.putExtra(MainFragment.CATEGORY, category);
-        intent.putExtra(MainFragment.DIFFICULTY, difficulty);
-        intent.putExtra(MainFragment.CATEGORY_STR, categoryStr);
-        context.startActivity(intent);
-    }
-
-
 }

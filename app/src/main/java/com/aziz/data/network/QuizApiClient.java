@@ -16,7 +16,8 @@ public class QuizApiClient implements IQuizApiClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+    ApiInterface
+            apiInterface = retrofit.create(ApiInterface.class);
 
     @Override
     public void getQuestionModel(final QuestionsCallBack callBack, int amount, int category, String difficulty) {

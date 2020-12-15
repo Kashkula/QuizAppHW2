@@ -8,6 +8,7 @@ import androidx.room.Update;
 
 import com.aziz.data.model.QuizResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao

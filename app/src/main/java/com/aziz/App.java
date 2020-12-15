@@ -15,6 +15,7 @@ import com.aziz.data.network.QuizApiClient;
 import java.util.Objects;
 
 public class App extends Application {
+
     public static QuizApiClient apiClient;
     public static QuizRepository repository;
     public static QuizDataBase db;
@@ -26,15 +27,17 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         apiClient = new QuizApiClient();
+
         IHistoryStorage historyStorage = new HistoryStorage();
 
         repository = new QuizRepository(apiClient, historyStorage);
 
         db = Room.databaseBuilder(getApplicationContext(),
                 QuizDataBase.class, "Quizdb").allowMainThreadQueries().build();
-        sp = Objects.requireNonNull(getSharedPreferences(SHARED, Context.MODE_PRIVATE));
 
+        sp = Objects.requireNonNull(getSharedPreferences(SHARED, Context.MODE_PRIVATE));
 
     }
 

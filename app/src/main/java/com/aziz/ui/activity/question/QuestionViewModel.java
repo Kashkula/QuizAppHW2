@@ -37,18 +37,7 @@ public class QuestionViewModel extends ViewModel {
     public int id, category, position = 0, forAnswer = 0;
     public static final String QUIZ_RESULT = "quizResult";
 
-
-    public void getFromIntent(Intent intent) {
-        id = intent.getIntExtra(MainFragment.ID, 22);
-        category = intent.getIntExtra(MainFragment.CATEGORY, 23);
-        difficulty = intent.getStringExtra(MainFragment.DIFFICULTY);
-        categoryStr = intent.getStringExtra(MainFragment.CATEGORY_STR);
-
-        Log.d("TAG", "getFromIntent: " + " category: " + category + " difficulty: " + difficulty + " id: " + id);
-        getQuestion(id, category, difficulty);
-    }
-
-    public void getQuestion(int id, int category, String difficulty) {
+    public void getQuestion() {
         App.repository.getQuestionModel(new IQuizApiClient.QuestionsCallBack() {
                                             @Override
                                             public void onSuccess(ArrayList<QuestionModel> result) {
@@ -57,8 +46,6 @@ public class QuestionViewModel extends ViewModel {
                                                     qm_list.clear();
                                                     qm_list.addAll(result);
                                                     isLoading.set(false);
-                                                    Log.d("TAG", "onSuccess: ");
-                                                    Log.d("TAG", "second: " + result.size());
                                                 }
                                             }
 
@@ -68,53 +55,6 @@ public class QuestionViewModel extends ViewModel {
                                             }
                                         }, id, category, difficulty
         );
-    }
-
-    public void getQuestionLiveData(QuestionActivity questionActivity, final QuestionAdapter adapter) {
-        questionLiveData.observe(questionActivity, adapter::setQuestions);
-    }
-
-    public void sendIntent(QuestionActivity qa) {
-        QuizResult quizResult = new QuizResult(categoryStr, difficulty, forAnswer, new Date(System.currentTimeMillis()), qm_list, id);
-
-        Intent intent = new Intent(qa, ResultActivity.class);
-        intent.putExtra(QUIZ_RESULT, new Gson().toJson(quizResult));
-        qa.setResult(RESULT_OK, intent);
-        qa.startActivity(intent);
-        qa.finish();
-    }
-
-    public void beginPBar(ProgressBar pBar, TextView tvQuality) {
-        pBar.setMax(id);
-        tvQuality.setText(0 + "/" + pBar.getMax());
-    }
-
-    public void nextItem(boolean correctAnswer, final int adapterPosition, final RecyclerView rv) {
-        if (correctAnswer)
-            forAnswer++;
-        new CountDownTimer(1000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                position = adapterPosition + 1;
-                rv.scrollToPosition(position);
-            }
-        }.start();
-    }
-
-    public void onSkip(RecyclerView rv) {
-        if (position < id)
-            rv.scrollToPosition(position += 1);
-
-    }
-
-    public void outback(QuestionActivity qa, RecyclerView rv) {
-        if (position > 0)
-            rv.scrollToPosition(position -= 1);
-        else qa.finish();
     }
 }
 

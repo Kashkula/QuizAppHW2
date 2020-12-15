@@ -1,13 +1,13 @@
 package com.aziz.data.local;
 
-import androidx.lifecycle.LiveData;
-
+import com.aziz.App;
 import com.aziz.data.model.QuizResult;
 import com.aziz.data.model.question.QuestionModel;
 import com.aziz.data.network.IQuizApiClient;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class QuizRepository implements IQuizApiClient, IHistoryStorage {
 
@@ -52,22 +52,21 @@ public class QuizRepository implements IQuizApiClient, IHistoryStorage {
     }
 
     @Override
-    public int saveQuizResult(QuizResult quizResult) {
-        return 0;
+    public void saveQuizResult(QuizResult quizResult) {
+        App.db.quizDao().insert(quizResult);
     }
 
     @Override
-    public LiveData<ArrayList<QuizResult>> getAll() {
-        return null;
+    public List<QuizResult> getAll() {
+        return App.db.quizDao().getAll();
     }
 
     @Override
     public void delete(int id) {
-
     }
 
     @Override
     public void deleteAll() {
-
+        App.db.quizDao().deleteAll();
     }
 }

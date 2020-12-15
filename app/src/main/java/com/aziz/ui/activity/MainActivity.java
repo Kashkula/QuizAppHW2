@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,12 +37,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListenerMF
         super.onCreate(savedInstanceState);
         SharedPreferences sp = App.sp;
         setTheme(App.setMyTheme(sp.getInt(SettingFragment.THEME, 20)));
-
         setContentView(R.layout.main_activity);
         init();
         fillFragment();
         bottomNavView();
         setPageAdapter();
+
     }
 
     private void setPageAdapter() {
@@ -97,8 +99,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListenerMF
         super.startActivityForResult(intent, requestCode);
 
     }
-
-
 
 
 //    private void openMainF(Bundle savedInstanceState) {

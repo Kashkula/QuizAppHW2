@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 public class HistoryFragment extends Fragment {
 
-
     protected HistoryViewModel vm;
     public ResultAdapter adapter;
     protected ArrayList<QuizResult> list;
@@ -46,7 +45,7 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        setList((ArrayList<QuizResult>) App.db.quizDao().getAll());
+        setList((ArrayList<QuizResult>) App.repository.getAll());
     }
 
     public void init(View v) {

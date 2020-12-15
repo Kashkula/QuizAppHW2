@@ -1,10 +1,9 @@
 package com.aziz.data.local;
 
-import androidx.lifecycle.LiveData;
-
 import com.aziz.data.model.QuizResult;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryStorage implements IHistoryStorage {
     @Override
@@ -13,12 +12,12 @@ public class HistoryStorage implements IHistoryStorage {
     }
 
     @Override
-    public int saveQuizResult(QuizResult quizResult) {
-        return 0;
+    public void saveQuizResult(QuizResult quizResult) {
+
     }
 
     @Override
-    public LiveData<ArrayList<QuizResult>> getAll() {
+    public List<QuizResult> getAll() {
         return null;
     }
 
